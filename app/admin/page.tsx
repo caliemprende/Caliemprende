@@ -1,6 +1,6 @@
 "use client";
 import { useCallback, useState } from "react";
-type Business={id:string;name:string;category:string;city:string;whatsapp:string;email:string;description:string|null;plan:string;status:string;created_at:string};
+type Business={id:string;name:string;category:string;city:string;whatsapp:string;email:string;description:string|null;plan:string;status:string;created_at:string;image_urls?:string[];instagram_url?:string|null};
 type Payment={id:string;reference:string;business_id:string|null;plan:string;amount_in_cents:number;currency:string;status:string;wompi_transaction_id:string|null;created_at:string;updated_at:string};
 export default function AdminPage(){
  const [password,setPassword]=useState("");
@@ -49,7 +49,7 @@ export default function AdminPage(){
  </div>
  {shown.length===0?<div style={{background:"white",padding:24,borderRadius:16}}>No hay negocios en esta sección.</div>:shown.map(b=><article key={b.id} style={{background:"white",padding:20,borderRadius:18,marginBottom:14,boxShadow:"0 5px 20px #251b2808"}}>
  <div style={{display:"flex",justifyContent:"space-between",gap:12,flexWrap:"wrap"}}><div><h2 style={{fontSize:21,margin:"0 0 6px"}}>{b.name}</h2><span style={{color:"#756d79"}}>{b.category} · {b.city} · {b.plan}</span></div><strong style={{color:b.status==="approved"?"#14804a":b.status==="rejected"?"#b42318":"#a15c00"}}>{label(b.status)}</strong></div>
- <p style={{margin:"12px 0 6px"}}>{b.description||"Sin descripción"}</p><p style={{color:"#655e69",fontSize:14,margin:"4px 0"}}>WhatsApp: {b.whatsapp} · Correo: {b.email}</p>
+ {b.image_urls?.length? <div style={{display:"flex",gap:8,flexWrap:"wrap",margin:"12px 0"}}>{b.image_urls.map((url,i)=><a key={url} href={url} target="_blank" rel="noreferrer"><img src={url} alt={"Foto "+(i+1)+" de "+b.name} style={{width:92,height:72,objectFit:"cover",borderRadius:10}}/></a>)}</div>:null}<p style={{margin:"12px 0 6px"}}>{b.description||"Sin descripción"}</p>{b.instagram_url&&<p style={{fontSize:14}}><a href={b.instagram_url} target="_blank" rel="noreferrer" style={{color:"#df2685"}}>{b.instagram_url}</a></p><p style={{color:"#655e69",fontSize:14,margin:"4px 0"}}>WhatsApp: {b.whatsapp} · Correo: {b.email}</p>
  <div style={{display:"flex",gap:8,flexWrap:"wrap",marginTop:14}}>
  <button disabled={!!busy} onClick={()=>changeStatus(b.id,"approved")} style={{background:"#13834b",color:"white",border:0,borderRadius:24,padding:"10px 16px",fontWeight:700,opacity:busy?0.6:1}}>Aprobar y publicar</button>
  <button disabled={!!busy} onClick={()=>changeStatus(b.id,"rejected")} style={{background:"#fff0f0",color:"#a52222",border:"1px solid #f0caca",borderRadius:24,padding:"10px 16px",fontWeight:700}}>Rechazar</button>
