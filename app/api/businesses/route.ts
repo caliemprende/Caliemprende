@@ -24,20 +24,20 @@ export async function POST(req: Request) {
   try {
     const body = await req.formData();
     const name = String(body.get("name") || "").trim();
-    const category = String(body.category || "").trim();
-    const city = String(body.city || "Cali").trim();
-    const whatsappInput = String(body.whatsapp || "").trim();
+    const category = String(body.get("category") || "").trim();
+    const city = String(body.get("city") || "Cali").trim();
+    const whatsappInput = String(body.get("whatsapp") || "").trim();
     const whatsapp = whatsappInput.replace(/[^0-9]/g, "");
-    const email = String(body.email || "").trim().toLowerCase();
-    const description = String(body.description || "").trim();
-    const plan = String(body.plan || "Gratis");
+    const email = String(body.get("email") || "").trim().toLowerCase();
+    const description = String(body.get("description") || "").trim();
+    const plan = String(body.get("plan") || "Gratis");
     const allowedPlans = new Set(["Gratis", "Emprendedor", "Destacado"]);
     if (!name || !category || !city || !whatsapp || !email) return NextResponse.json({ error: "Completa todos los campos obligatorios." }, { status: 400 });
-    if (name.length > 100 || description.length > 1000 || city.length > 80 || whatsapp.length < 10 || whatsapp.length > 15 || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) return NextResponse.json({ error: "Revisa el nombre, ciudad, WhatsApp y correo. El WhatsApp debe incluir entre 10 y 15 dígitos." }, { status: 400 });
+    if (name.length > 100 || description.length > 1000 || city.length > 80 || whatsapp.length < 10 || whatsapp.length > 15 || !email.includes("@") || !email.includes(".")) return NextResponse.json({ error: "Revisa el nombre, ciudad, WhatsApp y correo. El WhatsApp debe incluir entre 10 y 15 dígitos." }, { status: 400 });
     if (!allowedPlans.has(plan)) return NextResponse.json({ error: "Plan no válido." }, { status: 400 });
     if (plan !== "Gratis") return NextResponse.json({ error: "Los planes pagos aún no están habilitados. Selecciona Gratis para enviar tu solicitud." }, { status: 400 });
     const instagramUrl = String(body.get("instagram_url") || "").trim();
-    if (instagramUrl && (!/^https:\\/\\/(www\\.)?instagram\\.com\\//i.test(instagramUrl) || instagramUrl.length > 300)) return NextResponse.json({ error: "Ingresa un enlace válido de Instagram." }, { status: 400 });
+    if (instagramUrl && (!(instagramUrl.startsWith("https://instagram.com/") || instagramUrl.startsWith("https://www.instagram.com/")) || instagramUrl.length > 300)) return NextResponse.json({ error: "Ingresa un enlace válido de Instagram." }, { status: 400 });
     const photos = body.getAll("photos").filter((item): item is File => item instanceof File && item.size > 0);
     if (photos.length > 3 || photos.some(file => !["image/jpeg","image/png","image/webp"].includes(file.type) || file.size > 3*1024*1024)) return NextResponse.json({ error: "Puedes subir hasta 3 fotos JPG, PNG o WEBP de máximo 3 MB cada una." }, { status: 400 });
 
