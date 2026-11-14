@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Paisaje ilustrado de Cali al atardecer con montañas, ciudad, iglesia, gato y palmeras">
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#512078"/><stop offset=".48" stop-color="#b53b91"/><stop offset=".78" stop-color="#ff9b70"/><stop offset="1" stop-color="#ffd16c"/></linearGradient>
+ <linearGradient id="hill" x2="0" y2="1"><stop stop-color="#315b66"/><stop offset="1" stop-color="#173d49"/></linearGradient>
+ <linearGradient id="city" x2="0" y2="1"><stop stop-color="#ffd18c"/><stop offset="1" stop-color="#7a367a"/></linearGradient>
+ <radialGradient id="sun"><stop stop-color="#fff5bd"/><stop offset="1" stop-color="#ffb36e" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1600" height="900" fill="url(#sky)"/>
+<circle cx="1120" cy="360" r="300" fill="url(#sun)"/>
+<circle cx="1120" cy="360" r="95" fill="#ffe5a0" opacity=".85"/>
+<path d="M0 610 150 520 270 555 410 430 540 540 690 455 820 560 980 440 1110 535 1270 410 1430 535 1600 450V900H0Z" fill="#4b426f" opacity=".8"/>
+<path d="M0 690 180 590 330 640 520 515 700 635 870 520 1030 620 1220 500 1400 630 1600 535V900H0Z" fill="url(#hill)"/>
+<path d="M0 755Q300 650 540 735T1050 700T1600 690V900H0Z" fill="#173b45"/>
+<!-- city skyline -->
+<g fill="url(#city)" stroke="#582d68" stroke-width="5">
+ <path d="M260 700h70v-125h-70zM350 700h95V540h-95zM470 700h62V590h-62zM560 700h115V495H560zM700 700h72V565h-72zM810 700h100V525H810zM930 700h66V590h-66zM1020 700h125V550h-125zM1170 700h72V600h-72zM1270 700h100V530h-100z"/>
+</g>
+<g stroke="#ffe7b1" stroke-width="5" opacity=".65"><path d="M370 565h55M580 520h75M830 550h60M1040 575h80M1285 555h70"/></g>
+<!-- Ermita inspired church -->
+<g fill="#f7e9d9" stroke="#5d286f" stroke-width="7" stroke-linejoin="round">
+ <path d="M1370 710V475l42-70 42 70v235z"/><path d="M1385 475v-92l27-55 27 55v92z"/><path d="M1397 382v-65l15-35 15 35v65z"/>
+ <path d="M1355 710h115v-95h-115z"/><path d="M1400 710v-62q12-24 25 0v62z" fill="#8c4c89"/>
+ <path d="M1400 505q12-26 25 0v45h-25z" fill="#8b4b89"/>
+</g>
+<!-- palms -->
+<g fill="none" stroke="#183e42" stroke-width="15" stroke-linecap="round"><path d="M80 900Q90 700 140 470M1510 900Q1475 670 1500 450"/></g>
+<g fill="#28634f" stroke="#18483f" stroke-width="5">
+ <path d="M140 470Q20 380 5 425Q70 445 140 480Q20 475 35 525Q90 500 140 485Q75 560 120 570Q145 525 150 480Q190 570 225 535Q195 490 155 475Q260 465 250 420Q190 430 145 465Q200 365 160 355Q130 410 140 470Z"/>
+ <path d="M1500 450Q1375 370 1365 420Q1425 440 1500 460Q1380 470 1400 515Q1450 490 1500 470Q1440 555 1480 565Q1500 520 1510 470Q1550 555 1585 520Q1550 475 1515 460Q1600 450 1590 405Q1540 420 1500 450Z"/>
+</g>
+<!-- flowers -->
+<g fill="#ff4ca1" stroke="#ffe1ec" stroke-width="3"><g transform="translate(90 230)"><ellipse cy="-28" rx="18" ry="34"/><ellipse cy="-28" rx="18" ry="34" transform="rotate(72)"/><ellipse cy="-28" rx="18" ry="34" transform="rotate(144)"/><ellipse cy="-28" rx="18" ry="34" transform="rotate(216)"/><ellipse cy="-28" rx="18" ry="34" transform="rotate(288)"/><circle r="13" fill="#ffcb59"/></g><g transform="translate(1510 760) scale(1.4)"><ellipse cy="-28" rx="18" ry="34"/><ellipse cy="-28" rx="18" ry="34" transform="rotate(72)"/><ellipse cy="-28" rx="18" ry="34" transform="rotate(144)"/><ellipse cy="-28" rx="18" ry="34" transform="rotate(216)"/><ellipse cy="-28" rx="18" ry="34" transform="rotate(288)"/><circle r="13" fill="#ffcb59"/></g></g>
+<!-- Gato del Rio inspired silhouette -->
+<g transform="translate(120 670)" fill="#29223f" stroke="#ffcb83" stroke-width="5"><path d="M-50 170Q-80 90-55 25L-78-35-25-15 0-55 28-15 80-35 55 25Q82 110 45 170Z"/><path d="M-30 5Q0-15 30 5" fill="none"/><circle cx="-23" cy="40" r="7" fill="#ffdc75" stroke="none"/><circle cx="23" cy="40" r="7" fill="#ffdc75" stroke="none"/><path d="M-12 65Q0 78 12 65" fill="none"/><path d="M45 120Q150 150 110 30" fill="none" stroke-width="16"/></g>
+<rect width="1600" height="900" fill="#39104f" opacity=".13"/>
+</svg>
