@@ -26,7 +26,8 @@ export async function POST(req: Request) {
     const name = String(body.name || "").trim();
     const category = String(body.category || "").trim();
     const city = String(body.city || "Cali").trim();
-    const whatsapp = String(body.whatsapp || "").trim();
+    const whatsappInput = String(body.whatsapp || "").trim();
+    const whatsapp = whatsappInput.replace(/[^\\d]/g, "");
     const email = String(body.email || "").trim().toLowerCase();
     const description = String(body.description || "").trim();
     const plan = String(body.plan || "Gratis");
@@ -34,6 +35,7 @@ export async function POST(req: Request) {
     if (!name || !category || !city || !whatsapp || !email) return NextResponse.json({ error: "Completa todos los campos obligatorios." }, { status: 400 });
     if (name.length > 100 || description.length > 1000 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return NextResponse.json({ error: "Revisa los datos ingresados." }, { status: 400 });
     if (!allowedPlans.has(plan)) return NextResponse.json({ error: "Plan no válido." }, { status: 400 });
+    if (plan !== "Gratis") return NextResponse.json({ error: "Los planes pagos aún no están habilitados. Selecciona Gratis para enviar tu solicitud." }, { status: 400 });
 
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const key = process.env.SUPABASE_SECRET_KEY;
