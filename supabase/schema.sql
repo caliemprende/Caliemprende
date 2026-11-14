@@ -27,7 +27,7 @@ create table if not exists public.payment_attempts (
   id uuid primary key default gen_random_uuid(),
   reference text unique not null,
   business_id uuid references public.businesses(id) on delete set null,
-  plan text not null check (plan in ('Publicación','Destacado')),
+  plan text not null check (plan in ('Emprendedor','Destacado')),
   amount_in_cents bigint not null,
   currency text not null default 'COP',
   status text not null default 'PENDING',
