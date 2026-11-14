@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { createHash, randomUUID } from "node:crypto";
 export const runtime = "nodejs";
 
-const prices: Record<string, number> = { "Publicación": 5000, "Destacado": 25500 };
+const prices: Record<string, number> = { "Emprendedor": 25000, "Destacado": 45000 };
 
 export async function POST(req: Request) {
   try {
