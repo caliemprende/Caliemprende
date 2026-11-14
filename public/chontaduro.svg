@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Chontaduro colombiano">
+  <path d="M43 24C34 13 21 12 12 18c10 1 17 7 21 16" fill="#347c36"/>
+  <path d="M43 26C50 11 66 7 81 13 66 17 56 25 49 35" fill="#4d963d"/>
+  <path d="M45 29c-5-8-14-12-24-11 8 5 13 11 16 19" fill="#78ad42"/>
+  <path d="M39 34c-13-2-24 8-25 23-1 16 10 28 25 27 13-1 21-12 20-27-1-13-8-22-20-23Z" fill="#e64a20" stroke="#a82c19" stroke-width="2"/>
+  <path d="M64 31c-12 1-20 12-19 26 1 15 11 26 25 24 13-2 20-14 17-28-2-13-11-23-23-22Z" fill="#f07824" stroke="#b94319" stroke-width="2"/>
+  <path d="M24 48c2-7 7-11 13-12M54 47c3-7 8-11 14-11" fill="none" stroke="#ffb34a" stroke-width="5" stroke-linecap="round"/>
+  <path d="M24 67c5 8 13 10 20 6M58 67c5 7 12 8 18 4" fill="none" stroke="#bd351c" stroke-width="2" stroke-linecap="round" opacity=".65"/>
+  <path d="M40 30c4-5 7-9 9-15" stroke="#76502a" stroke-width="3" stroke-linecap="round" fill="none"/>
+</svg>
