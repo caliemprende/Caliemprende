@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Chontaduro colombiano">
-  <path d="M43 24C34 13 21 12 12 18c10 1 17 7 21 16" fill="#347c36"/>
-  <path d="M43 26C50 11 66 7 81 13 66 17 56 25 49 35" fill="#4d963d"/>
-  <path d="M45 29c-5-8-14-12-24-11 8 5 13 11 16 19" fill="#78ad42"/>
-  <path d="M39 34c-13-2-24 8-25 23-1 16 10 28 25 27 13-1 21-12 20-27-1-13-8-22-20-23Z" fill="#e64a20" stroke="#a82c19" stroke-width="2"/>
-  <path d="M64 31c-12 1-20 12-19 26 1 15 11 26 25 24 13-2 20-14 17-28-2-13-11-23-23-22Z" fill="#f07824" stroke="#b94319" stroke-width="2"/>
-  <path d="M24 48c2-7 7-11 13-12M54 47c3-7 8-11 14-11" fill="none" stroke="#ffb34a" stroke-width="5" stroke-linecap="round"/>
-  <path d="M24 67c5 8 13 10 20 6M58 67c5 7 12 8 18 4" fill="none" stroke="#bd351c" stroke-width="2" stroke-linecap="round" opacity=".65"/>
-  <path d="M40 30c4-5 7-9 9-15" stroke="#76502a" stroke-width="3" stroke-linecap="round" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Chontaduro colombiano">
+ <defs><linearGradient id="fruit" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9b24"/><stop offset=".55" stop-color="#f05a16"/><stop offset="1" stop-color="#c83b17"/></linearGradient><linearGradient id="shine" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff4c8" stop-opacity=".85"/><stop offset="1" stop-color="#fff4c8" stop-opacity="0"/></linearGradient></defs>
+ <path d="M59 29C42 14 23 17 15 33c-6 12-3 32 3 48 7 20 21 29 42 29s35-9 42-29c6-16 9-36 3-48-8-16-27-19-46-4Z" fill="url(#fruit)" stroke="#a93217" stroke-width="3"/>
+ <path d="M31 42c-5 12-2 28 3 38 4 9 10 14 18 16" fill="none" stroke="url(#shine)" stroke-width="8" stroke-linecap="round"/>
+ <path d="M48 25c4-5 9-7 14-7 8 0 14 4 19 8l-4 8c-8 3-20 2-28-2Z" fill="#65402b"/>
+ <path d="M51 25c7 4 17 5 27 2M58 19c3 4 8 7 15 8" fill="none" stroke="#3f2a20" stroke-width="3" stroke-linecap="round"/>
+ <path d="M47 24c-5-5-11-7-18-6 5 5 9 9 15 12" fill="#3f873f"/>
+ <path d="M71 23c6-7 14-9 22-7-6 5-12 9-19 12" fill="#4f9943"/>
+ <ellipse cx="81" cy="48" rx="8" ry="13" fill="#ffb24c" opacity=".5"/>
 </svg>
