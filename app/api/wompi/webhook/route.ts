@@ -11,7 +11,9 @@ export async function POST(req: Request) {
     const event = await req.json();
     if (event?.event !== "transaction.updated") return NextResponse.json({ received: true });
 
-    const secret = process.env.WOMPI_EVENTS_SECRET;
+    const secret = event?.environment === "test"
+      ? process.env.WOMPI_TEST_EVENTS_SECRET
+      : process.env.WOMPI_EVENTS_SECRET;
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const supabaseKey = process.env.SUPABASE_SECRET_KEY;
     if (!secret || !supabaseUrl || !supabaseKey) return NextResponse.json({ error: "Webhook no configurado" }, { status: 503 });
