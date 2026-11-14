@@ -1,0 +1,18 @@
+{
+  "name": "Cali Emprende",
+  "short_name": "Cali Emprende",
+  "description": "Descubre y apoya los emprendimientos de Cali.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#63158a",
+  "theme_color": "#63158a",
+  "lang": "es-CO",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
