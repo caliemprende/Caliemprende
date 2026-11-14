@@ -13,8 +13,9 @@ export async function POST(req: Request) {
 
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const supabaseKey = process.env.SUPABASE_SECRET_KEY;
-    const publicKey = process.env.WOMPI_PUBLIC_KEY;
-    const integritySecret = process.env.WOMPI_INTEGRITY_SECRET;
+    const testMode = process.env.WOMPI_ENVIRONMENT === "test";
+    const publicKey = testMode ? process.env.WOMPI_TEST_PUBLIC_KEY : process.env.WOMPI_PUBLIC_KEY;
+    const integritySecret = testMode ? process.env.WOMPI_TEST_INTEGRITY_SECRET : process.env.WOMPI_INTEGRITY_SECRET;
     if (!supabaseUrl || !supabaseKey || !publicKey || !integritySecret) {
       return NextResponse.json({ error: "Los pagos aún no están habilitados. Falta completar la configuración segura." }, { status: 503 });
     }
