@@ -49,6 +49,7 @@ export default function CommunityPassport(){
   for(const item of vv){if(item.photo_path){const {data}=await client.storage.from(bucket).createSignedUrl(item.photo_path,300);if(data?.signedUrl)urls[item.place_slug]=data.signedUrl;}}
   setPhotoUrls(urls);
  }
+ useEffect(()=>{if(!client)return;Promise.all([client.from("place_comments").select("id,place_slug,display_name,content,created_at").order("created_at",{ascending:false}).limit(250),client.from("place_reactions").select("place_slug,reaction,user_id")]).then(([cr,rr])=>{if(cr.data)setComments(cr.data as Comment[]);if(rr.data)setReactions(rr.data as Reaction[]);});},[client]);
  useEffect(()=>{if(user&&client)refresh();else{setVisits([]);setPhotoUrls({});}},[user,client]);
  const visitedCount=visits.filter(v=>v.visited).length;
  const percent=Math.round(visitedCount/places.length*100);
