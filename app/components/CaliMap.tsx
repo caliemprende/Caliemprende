@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
-type EventPoint={title:string;venue:string;latitude:number|null;longitude:number|null};
+type EventPoint={id:string;title:string;venue:string;latitude:number|null;longitude:number|null};
 declare global { interface Window { L?: any } }
 const landmarks=[
  {name:"Gato del Río",lat:3.4572,lng:-76.5395,kind:"Icono"},
@@ -14,7 +14,7 @@ const landmarks=[
  {name:"Plazoleta Jairo Varela",lat:3.4540,lng:-76.5320,kind:"Cultura"},
  {name:"Parque del Ingenio",lat:3.3760,lng:-76.5400,kind:"Parque"}
 ];
-export default function CaliMap({event}:{event?:EventPoint|null}){
+export default function CaliMap({events=[]}:{events?:EventPoint[]}){
  const mapRef=useRef<HTMLDivElement>(null);
  useEffect(()=>{
   let map:any,disposed=false;
@@ -34,13 +34,11 @@ export default function CaliMap({event}:{event?:EventPoint|null}){
    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
    const bounds:any[]=[];
    landmarks.forEach(place=>{const marker=L.marker([place.lat,place.lng]).addTo(map);marker.bindPopup('<strong>'+place.name+'</strong><br/>'+place.kind);bounds.push([place.lat,place.lng]);});
-   if(event?.latitude!=null&&event?.longitude!=null){
-    const marker=L.marker([event.latitude,event.longitude]).addTo(map);marker.bindPopup('<strong>📍 '+event.title+'</strong><br/>'+event.venue).openPopup();bounds.push([event.latitude,event.longitude]);
-   }
+   events.forEach(event=>{if(event.latitude!=null&&event.longitude!=null){const marker=L.marker([event.latitude,event.longitude]).addTo(map);marker.bindPopup('<strong>📍 '+event.title+'</strong><br/>'+event.venue);bounds.push([event.latitude,event.longitude]);}});
    if(bounds.length)map.fitBounds(bounds,{padding:[24,24],maxZoom:12});
   };
   load().catch(()=>{if(mapRef.current)mapRef.current.innerHTML="No pudimos cargar el mapa. Intenta actualizar la página.";});
   return()=>{disposed=true;if(map)map.remove();};
- },[event?.title,event?.venue,event?.latitude,event?.longitude]);
+ },[JSON.stringify(events)]);
  return <div className="cali-map-shell"><div ref={mapRef} className="cali-map" role="application" aria-label="Mapa de Cali con eventos y sitios emblemáticos"/><div className="map-legend"><span><i className="legend-event"/> Evento publicado</span><span><i className="legend-place"/> Lugares emblemáticos y parques</span></div></div>;
 }
