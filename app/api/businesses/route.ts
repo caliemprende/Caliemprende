@@ -27,7 +27,7 @@ export async function POST(req: Request) {
     const category = String(body.category || "").trim();
     const city = String(body.city || "Cali").trim();
     const whatsappInput = String(body.whatsapp || "").trim();
-    const whatsapp = whatsappInput.replace(/[^\\d]/g, "");
+    const whatsapp = whatsappInput.replace(/\\D/g, "");
     const email = String(body.email || "").trim().toLowerCase();
     const description = String(body.description || "").trim();
     const plan = String(body.plan || "Gratis");
