@@ -45,7 +45,7 @@ export default function CaliMap({events=[]}:{events?:EventPoint[]}){
    L.marker([lat,lng],{icon}).bindPopup(popup).addTo(layerRef.current);bounds.push([lat,lng]);
   };
   filteredLandmarks.forEach(p=>add(p.lat,p.lng,p.name,p.category,p.description,p.kind));
-  if(active==="Todos"||active==="Eventos")events.forEach(e=>{if(e.latitude!=null&&e.longitude!=null)add(e.latitude,e.longitude,e.title,"Eventos","Evento en '+e.venue+'. Consulta los detalles y la fecha de la actividad.",e.venue);});
+  if(active==="Todos"||active==="Eventos")events.forEach(e=>{if(e.latitude!=null&&e.longitude!=null)add(e.latitude,e.longitude,e.title,"Eventos","Evento en "+e.venue+". Consulta los detalles y la fecha de la actividad.",e.venue);});
   if(bounds.length)mapInstance.current.fitBounds(bounds,{padding:[30,30],maxZoom:13});
  },[active,events,mapReady,filteredLandmarks]);
  function focusPlace(name:string){const p=landmarks.find(x=>x.name===name);if(p&&mapInstance.current){mapInstance.current.setView([p.lat,p.lng],15);layerRef.current.eachLayer((marker:any)=>{const ll=marker.getLatLng();if(Math.abs(ll.lat-p.lat)<0.00001&&Math.abs(ll.lng-p.lng)<0.00001)marker.openPopup();});}}
