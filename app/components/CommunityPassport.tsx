@@ -95,7 +95,7 @@ export default function CommunityPassport(){
   if(result.error){setNotice("No pudimos guardar tu reacción.");return;}await refresh();
  }
  const myPhotos=useMemo(()=>visits.filter(v=>v.photo_path),[visits]);
- return <section className="passport-section" id="pasaporte"><div className="passport-heading"><span className="tag">PASAPORTE CALEÑO</span><h2>Vive Cali, guarda tus recuerdos <span>🍊</span></h2><p>Marca los lugares que visitas, colecciona tus fotos privadas y comparte opiniones con la comunidad.</p></div>
+ return <section className="passport-section" id="pasaporte"><div className="passport-heading"><span className="tag">PASAPORTE CALEÑO</span><h2>Vive Cali, guarda tus recuerdos <img className="chontaduro-inline" src="/chontaduro.svg" alt="Chontaduro colombiano"/></h2><p>Marca los lugares que visitas, colecciona tus fotos privadas y comparte opiniones con la comunidad.</p></div>
  {!user?<div className="passport-auth"><div><h3>Únete a la comunidad</h3><p>Explora libremente. Para guardar tus visitas, subir fotos privadas o comentar, crea tu cuenta o inicia sesión.</p></div><form onSubmit={authenticate} className="passport-auth-form">
  {mode==="signup"&&<label>Cómo quieres aparecer<input value={displayName} onChange={e=>setDisplayName(e.target.value)} placeholder="Tu nombre o apodo" maxLength={40}/></label>}
  <label>Correo electrónico<input type="email" required value={email} onChange={e=>setEmail(e.target.value)} placeholder="tu@correo.com"/></label>
@@ -105,7 +105,7 @@ export default function CommunityPassport(){
  </form></div>:<div className="passport-userbar"><span>¡Hola, {String(user.user_metadata?.display_name||user.email?.split("@")[0])}! Este es tu pasaporte privado.</span><button className="text-button" onClick={()=>client?.auth.signOut()}>Cerrar sesión</button></div>}
  {notice&&<p className="passport-notice" role="status">{notice}</p>}
  <div className="passport-progress"><div className="passport-progress-top"><div><strong>{visitedCount} de {places.length}</strong><span> lugares visitados</span></div><b>{percent}%</b></div>
- <div className="chontaduro-track"><div className="chontaduro-line"><span className="chontaduro-fill" style={{width:percent+"%"}}/></div><span className="chontaduro-marker" style={{left:percent+"%"}} aria-label={"Progreso "+percent+" por ciento"}>🍊</span></div><small>¡Tu chontaduro avanza con cada lugar que descubres!</small></div>
+ <div className="chontaduro-track"><div className="chontaduro-line"><span className="chontaduro-fill" style={{width:percent+"%"}}/></div><span className="chontaduro-marker" style={{left:percent+"%"}} aria-label={"Progreso "+percent+" por ciento"}><img src="/chontaduro.svg" alt="Chontaduro" /></span></div><small>¡Tu chontaduro avanza con cada lugar que descubres!</small></div>
  <div className="passport-grid">{places.map(place=>{
   const visit=visits.find(v=>v.place_slug===place.slug);const done=!!visit?.visited;
   const placeComments=comments.filter(c=>c.place_slug===place.slug);
