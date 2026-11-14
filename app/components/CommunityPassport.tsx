@@ -24,7 +24,7 @@ export default function CommunityPassport(){
  const [client,setClient]=useState<SupabaseClient|null>(null);
  const [user,setUser]=useState<User|null>(null);
  const [email,setEmail]=useState(""); const [password,setPassword]=useState(""); const [displayName,setDisplayName]=useState("");
- const [mode,setMode]=useState<"login"|"signup">("login");
+ const [mode,setMode]=useState<"login"|"signup">("signup");
  const [visits,setVisits]=useState<Visit[]>([]); const [comments,setComments]=useState<Comment[]>([]); const [reactions,setReactions]=useState<Reaction[]>([]);
  const [drafts,setDrafts]=useState<Record<string,string>>({}); const [photoUrls,setPhotoUrls]=useState<Record<string,string>>({});
  const [busy,setBusy]=useState(false); const [notice,setNotice]=useState("");
