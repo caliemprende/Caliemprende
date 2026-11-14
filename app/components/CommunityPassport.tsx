@@ -53,6 +53,14 @@ export default function CommunityPassport(){
  useEffect(()=>{if(user&&client)refresh();else{setVisits([]);setPhotoUrls({});}},[user,client]);
  const visitedCount=visits.filter(v=>v.visited).length;
  const percent=Math.round(visitedCount/places.length*100);
+ const milestones=[
+  {at:1,icon:"🌺",name:"Primera huella",detail:"Tu primera visita caleña."},
+  {at:3,icon:"🍍",name:"Sabores y rincones",detail:"Ya descubriste tres lugares."},
+  {at:5,icon:"🎨",name:"Explorador cultural",detail:"Cinco lugares hacen parte de tu historia."},
+  {at:11,icon:"🏆",name:"Embajador de Cali",detail:"Completaste los once lugares del pasaporte."}
+ ];
+ const nextMilestone=milestones.find(m=>visitedCount<m.at);
+
  async function authenticate(e:React.FormEvent){
   e.preventDefault();if(!client)return;setBusy(true);setNotice("");
   const result=mode==="signup"
@@ -106,6 +114,7 @@ export default function CommunityPassport(){
  {notice&&<p className="passport-notice" role="status">{notice}</p>}
  <div className="passport-progress"><div className="passport-progress-top"><div><strong>{visitedCount} de {places.length}</strong><span> lugares visitados</span></div><b>{percent}%</b></div>
  <div className="chontaduro-track"><div className="chontaduro-line"><span className="chontaduro-fill" style={{width:percent+"%"}}/></div><span className="chontaduro-marker" style={{left:percent+"%"}} aria-label={"Progreso "+percent+" por ciento"}><img src="/chontaduro.svg" alt="Chontaduro" /></span></div><small>¡Tu chontaduro avanza con cada lugar que descubres!</small></div>
+ <div className="passport-achievements"><div className="passport-achievements-heading"><div><span className="tag">TUS LOGROS</span><h3>Insignias del pasaporte</h3><p>{nextMilestone ? "Te faltan "+(nextMilestone.at-visitedCount)+" visita(s) para conseguir “"+nextMilestone.name+"”." : "¡Colección completa! Eres embajador de Cali."}</p></div><span className="achievement-count">{milestones.filter(m=>visitedCount>=m.at).length}/4</span></div><div className="passport-achievement-grid">{milestones.map(m=>{const unlocked=visitedCount>=m.at;return <article key={m.name} className={unlocked?"passport-achievement unlocked":"passport-achievement locked"}><span className="achievement-medal">{m.icon}</span><div><strong>{m.name}</strong><small>{m.detail}</small><em>{unlocked?"Desbloqueada":"Se desbloquea con "+m.at+" visita"+(m.at===1?"":"s")}</em></div><span className="achievement-state">{unlocked?"✓":"🔒"}</span></article>;})}</div></div>
  <div className="passport-grid">{places.map(place=>{
   const visit=visits.find(v=>v.place_slug===place.slug);const done=!!visit?.visited;
   const placeComments=comments.filter(c=>c.place_slug===place.slug);
