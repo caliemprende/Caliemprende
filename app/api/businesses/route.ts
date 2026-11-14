@@ -32,7 +32,7 @@ export async function POST(req: Request) {
     const plan = String(body.plan || "Gratis");
     const allowedPlans = new Set(["Gratis", "Emprendedor", "Destacado"]);
     if (!name || !category || !city || !whatsapp || !email) return NextResponse.json({ error: "Completa todos los campos obligatorios." }, { status: 400 });
-    if (name.length > 100 || description.length > 1000 || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) return NextResponse.json({ error: "Revisa los datos ingresados." }, { status: 400 });
+    if (name.length > 100 || description.length > 1000 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return NextResponse.json({ error: "Revisa los datos ingresados." }, { status: 400 });
     if (!allowedPlans.has(plan)) return NextResponse.json({ error: "Plan no válido." }, { status: 400 });
 
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
