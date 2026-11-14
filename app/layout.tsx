@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 export const metadata: Metadata = {
   title: "Cali Emprende | Compra local, impulsa Cali",
-  description: "Descubre negocios, productos y servicios de emprendedores de Cali.",
+  description: "El directorio digital de Cali: encuentra negocios, tiendas, restaurantes, productos, servicios y planes locales, o registra tu emprendimiento para llegar a más clientes.",
   manifest: "/manifest.json",
   appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "Cali Emprende" },
   icons: { icon: "/icon.svg", apple: "/icon.svg" },
