@@ -68,3 +68,10 @@ section{padding:70px 0}.section-head{display:flex;justify-content:space-between;
 
 /* Fichas visuales de negocios y fotos de emprendedores */
 .business-card{overflow:hidden;padding:0 0 22px}.business-card>.tag,.business-card h3,.business-card>p,.business-card-actions{margin-left:22px;margin-right:22px}.business-card-cover{display:block;width:100%;height:190px;object-fit:cover;margin:0 0 18px;background:#fff0f7}.business-card-actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.business-instagram{font-size:13px;font-weight:800;color:#b30d65}.formgrid input[type=file]{padding:12px;background:#fff8fb;border-style:dashed}
+
+
+/* Paisaje ilustrado de Cali como fondo de la portada */
+.hero{background:linear-gradient(90deg,rgba(53,19,73,.88) 0%,rgba(91,24,105,.76) 48%,rgba(91,24,105,.22) 100%),url('/cali-hero.svg') center 48%/cover no-repeat}
+.hero:before{border-color:#ffffff22}
+.hero:after{border-color:#ffffff18}
+@media(max-width:760px){.hero{background:linear-gradient(90deg,rgba(53,19,73,.88),rgba(91,24,105,.62)),url('/cali-hero.svg') 57% center/cover no-repeat}}
