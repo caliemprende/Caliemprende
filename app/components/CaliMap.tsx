@@ -12,7 +12,8 @@ const landmarks=[
  {name:"Zoológico de Cali",lat:3.4440,lng:-76.5480,kind:"Naturaleza"},
  {name:"Parque Artesanal Loma de la Cruz",lat:3.4390,lng:-76.5310,kind:"Artesanías"},
  {name:"Plazoleta Jairo Varela",lat:3.4540,lng:-76.5320,kind:"Cultura"},
- {name:"Parque del Ingenio",lat:3.3760,lng:-76.5400,kind:"Parque"}
+ {name:"Parque del Ingenio",lat:3.3760,lng:-76.5400,kind:"Parque"},
+ {name:"Galería Alameda",lat:3.434278,lng:-76.5353587,kind:"Gastronomía y mercado"}
 ];
 export default function CaliMap({events=[]}:{events?:EventPoint[]}){
  const mapRef=useRef<HTMLDivElement>(null);
