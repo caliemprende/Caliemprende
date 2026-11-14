@@ -33,7 +33,7 @@ export async function POST(req: Request) {
     const plan = String(body.plan || "Gratis");
     const allowedPlans = new Set(["Gratis", "Emprendedor", "Destacado"]);
     if (!name || !category || !city || !whatsapp || !email) return NextResponse.json({ error: "Completa todos los campos obligatorios." }, { status: 400 });
-    if (name.length > 100 || description.length > 1000 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return NextResponse.json({ error: "Revisa los datos ingresados." }, { status: 400 });
+    if (name.length > 100 || description.length > 1000 || city.length > 80 || whatsapp.length < 10 || whatsapp.length > 15 || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) return NextResponse.json({ error: "Revisa el nombre, ciudad, WhatsApp y correo. El WhatsApp debe incluir entre 10 y 15 dígitos." }, { status: 400 });
     if (!allowedPlans.has(plan)) return NextResponse.json({ error: "Plan no válido." }, { status: 400 });
     if (plan !== "Gratis") return NextResponse.json({ error: "Los planes pagos aún no están habilitados. Selecciona Gratis para enviar tu solicitud." }, { status: 400 });
 
