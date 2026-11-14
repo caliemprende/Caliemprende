@@ -12,9 +12,14 @@ export async function GET(req:Request){
  if(!authorized(req))return NextResponse.json({error:"Contraseña incorrecta."},{status:401});
  const url=process.env.NEXT_PUBLIC_SUPABASE_URL,key=process.env.SUPABASE_SECRET_KEY;
  if(!url||!key)return NextResponse.json({error:"Falta configurar la conexión segura."},{status:503});
- const r=await fetch(url+"/rest/v1/businesses?select=id,name,category,city,whatsapp,email,description,plan,status,created_at&order=created_at.desc&limit=200",{headers:{apikey:key,Authorization:"Bearer "+key},cache:"no-store"});
- if(!r.ok)return NextResponse.json({error:"No pudimos consultar los negocios."},{status:502});
- return NextResponse.json({businesses:await r.json()});
+ const headers={apikey:key,Authorization:"Bearer "+key};
+ const [businessResponse,paymentResponse]=await Promise.all([
+  fetch(url+"/rest/v1/businesses?select=id,name,category,city,whatsapp,email,description,plan,status,created_at&order=created_at.desc&limit=200",{headers,cache:"no-store"}),
+  fetch(url+"/rest/v1/payment_attempts?select=id,reference,business_id,plan,amount_in_cents,currency,status,wompi_transaction_id,created_at,updated_at&order=created_at.desc&limit=200",{headers,cache:"no-store"})
+ ]);
+ if(!businessResponse.ok)return NextResponse.json({error:"No pudimos consultar los negocios."},{status:502});
+ if(!paymentResponse.ok)return NextResponse.json({error:"No pudimos consultar los pagos."},{status:502});
+ return NextResponse.json({businesses:await businessResponse.json(),payments:await paymentResponse.json()});
 }
 export async function PATCH(req:Request){
  if(!authorized(req))return NextResponse.json({error:"Contraseña incorrecta."},{status:401});
