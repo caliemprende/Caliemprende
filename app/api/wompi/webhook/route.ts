@@ -11,7 +11,8 @@ export async function POST(req: Request) {
     const event = await req.json();
     if (event?.event !== "transaction.updated") return NextResponse.json({ received: true });
 
-    const secret = event?.environment === "test"
+    const isTestMode = process.env.WOMPI_ENVIRONMENT === "test" || event?.environment === "test";
+    const secret = isTestMode
       ? process.env.WOMPI_TEST_EVENTS_SECRET
       : process.env.WOMPI_EVENTS_SECRET;
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
